@@ -30,13 +30,13 @@ bot = commands.Bot(command_prefix='$')
 
 @bot.command(name='bot',help='posts current bots exp and lvl')
 async def exp(ctx):
-    r = requests.get('https://game.eoserv.net/api/get_character?name=[##PUT YOUR CHAR NAME HERE##]')
+    r = requests.get('https://game.eoserv.net/api/get_character?name=PUT YOUR CHAR NAME HERE')
     json_data = json.loads(r.text)
     status_bot = json_data['level']
     status_exp = json_data['exp']
     await ctx.send('Bot Level is: **{}**'.format(status_bot) +                           
     '       Current EXP is: **{}**'.format(status_exp)+  
-    '       http://bbis.us/~blo/eosig/?user=[##PUT YOUR CHAR NAME HERE##]&type=4')
+    '       http://bbis.us/~blo/eosig/?user=PUT YOUR CHAR NAME HERE&type=4')
 
 # CHAR LOOK UP
 @bot.command(name='player',help='Look up character level and exp. Will also post eosig to see if char is online.')
@@ -57,7 +57,7 @@ async def displayembed(ctx):
     embed.add_field(name="**$player <name>**", value="This will post the players level and exp.", inline=False) 
     embed.add_field(name="**$eosig <name>**", value="This will post a eosig.", inline=False)
     embed.add_field(name="**$eo**", value="This will post a random Endless Online Fact.", inline=False)
-    embed.add_field(name="**$coords**", value="This will post the players cord.", inline=False) 
+    embed.add_field(name="**$servers**", value="This will post some eo private servers.", inline=False) 
 
     embed.set_footer(text='\u200b',icon_url="https://cdn-icons-png.flaticon.com/512/183/183580.png") 
     await ctx.send(embed=embed)
@@ -90,6 +90,32 @@ async def displayembed(ctx):
 
   await ctx.send(embed=embed)
 #######
+
+###DOWNLOAD EO
+@bot.command(name="servers", help='Endless Online Downloads')
+async def displayembed(ctx):
+    embed = discord.Embed(title="**EO Clone**",
+                          description="https://game.eoserv.net/")
+    embed.add_field(name="**Fallen Evolution**",
+                    value="https://fallen-evolution.com/",
+                    inline=False)
+    embed.add_field(name="**Bones Underground**",
+                    value="http://game.bones-underground.org",
+                    inline=False)
+    embed.add_field(name="**EO2**",
+                    value="http://www.endlessonline2.com/",
+                    inline=False)
+    embed.add_field(name="**EO Plus**",
+                    value="http://eo-plus.com/",
+                    inline=False)
+    embed.add_field(name="**Server List**",
+                    value="http://www.apollo-games.com/SLN/sln.php",
+                    inline=False)
+
+    embed.set_footer(
+        text='\u200b',
+        icon_url="https://cdn-icons-png.flaticon.com/512/183/183580.png")
+    await ctx.send(embed=embed)
 
 
 
